@@ -10,15 +10,14 @@ jobs:
     steps:
       run: sudo apt-get update
       run: sudo apt-get upgrade
-    - name: Upgrade pip
-      run: python -m pip install --upgrade pip
-      - name: Install dependencies
-      run: pip install -r docs/requirements.txt
-    - uses: -H actions/checkout@v4
+    - uses: actions/checkout@v4
       with:
         persist-credentials: false
     - name: Build HTML
-      uses: ammaraskar/sphinx-action@master
+    - name: Upgrade pip
+      run: /usr/local/bin/py -m pip install --upgrade pip
+      - name: Install dependencies
+      uses: -H ammaraskar/sphinx-action@master
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
       with:
