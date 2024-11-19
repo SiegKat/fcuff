@@ -4,7 +4,7 @@ import os
 import re
 import logging
 
-from fcuff.modelo import Datum
+from fcuff.model import Datum
 
 _log = logging.getLogger(__name__)
 _log_fmt = "%(levelname)s: %(message)s"
