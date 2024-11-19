@@ -1,0 +1,57 @@
+name: "Sphinx: Render docs"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+      # Update and upgrade system packages
+      - name: Update and upgrade system packages
+        run: sudo apt-get update && sudo apt-get upgrade -y
+      
+      # Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      # Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+
+      # Upgrade pip
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
+
+      # Install dependencies
+      - name: Install dependencies
+        run: pip install -r docs/requirements.txt
+
+      # Build HTML using Sphinx
+      - name: Build HTML
+        uses: ammaraskar/sphinx-action@master
+        with:
+          docs-folder: "docs/"
+
+      # Upload artifacts
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: html-docs
+          path: docs/build/html/
+
+      # Deploy to GitHub Pages
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/build/html
