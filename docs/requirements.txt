@@ -1,6 +1,7 @@
-py -m pip install --upgrade pip
-py -m pip install furo==2021.11.16
-py -m pip install numpy
-py -m pip install pandas 
-py -m pip install matplotlib
-py -m pip install fcuff
+pip install --upgrade pip
+pip install furo==2021.11.16
+pip install numpy
+pip install pandas 
+pip install matplotlib
+pip install fcuff
+pip install upgrade
