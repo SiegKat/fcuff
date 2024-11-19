@@ -8,10 +8,12 @@ import warnings
 warnings.filterwarnings("ignore", "(?s).*MATPLOTLIBDATA.*", category=UserWarning)
 logging.getLogger('matplotlib.font_manager').disabled = True
 
+
+
 import numpy as np
 import pandas as pd
 import fcuff as fc
-from fcuff.modelo import Datum
+from fcuff.model import Datum
 
 #import emn_sdk
 #from emn_sdk.io.ckan import CKAN
@@ -22,19 +24,27 @@ dll_dir = os.path.dirname(PyQt6.__file__)
 dll_path = os.path.join(dll_dir, 'plugins', 'platforms')
 os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = dll_path
 
-from PyQt6 import QtCore, QtWidgets, QtGui
+#from PyQt6 import QtCore, QtWidgets, QtGui
+from PyQt6 import QtCore
+from PyQt6 import QtWidgets, QtGui, QtCore
+
 from PyQt6.QtWidgets import *
 from PyQt6.QtGui import QDesktopServices, QFont, QPalette, QColor
-from PyQt6.QtCore import Qt, qVersionpi
+from PyQt6.QtCore import Qt, qVersion
 
 
 from matplotlib.backends.backend_qt5agg import (FigureCanvasQTAgg, NavigationToolbar2QT as NavigationToolbar)
 
-from matplotlib.backends.qt_compat import is_pyqt5
+#from matplotlib.backends.qt_compat import is_pyqt5
 if qVersion() == 5:
-	from matplotlib.backends.backend_qt5agg import (FigureCanvasQTAgg, NavigationToolbar2QT as NavigationToolbar)
+	from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg
+	from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
+
 else:
-	from matplotlib.backends.backend_qt4agg import (FigureCanvasQTAgg, NavigationToolbar2QT as NavigationToolbar)
+	from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
+	from matplotlib.backends.backend_qtagg import NavigationToolbar2QT as NavigationToolbar
+
+
 
 
 import matplotlib
