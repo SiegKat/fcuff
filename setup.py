@@ -9,7 +9,7 @@ setuptools.setup(
   description = 'Análise e processamento de dados de experimentos com célula combústivel e eletrolizadores',
   long_description = long_description,
   long_description_content_type = 'text/markdown',
-  url = 'https://github.com/SiegKat/FuelCellUFF',
+  url = 'https://github.com/SiegKat/fcuff',
   author = 'Thiago Costa',
   author_email = 'tabrantedaco2023@fau.edu',
   license = 'MIT',
@@ -23,6 +23,6 @@ setuptools.setup(
   install_requires=['numpy', 'pandas', 'matplotlib', 'scipy', 'PySide6', 'PyQT6'],
   project_urls={
     #'Documentation': '',
-    'Source': 'https://github.com/SiegKat/FuelCellUFF'
+    'Source': 'https://github.com/SiegKat/fcuff'
   }
 )
