@@ -14,5 +14,6 @@ Contents
 
 .. toctree::
 
+   usage.rst
    setup.rst
    api.rst
