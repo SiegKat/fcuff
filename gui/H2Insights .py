@@ -1,4 +1,6 @@
 import sys
+import matplotlib
+matplotlib.use('QtAgg')
 import os
 from pathlib import Path
 import logging
@@ -8,38 +10,36 @@ logging.getLogger('matplotlib.font_manager').disabled = True
 
 import numpy as np
 import pandas as pd
-import fuelcell as fc
-from fuelcell.model import Datum
+import fcuff as fc
+from fcuff.modelo import Datum
 
 #import emn_sdk
 #from emn_sdk.io.ckan import CKAN
 
 ### DO NOT DELETE ###
-# import PyQt5
-# dll_dir = os.path.dirname(PyQt5.__file__)
-# dll_path = os.path.join(dll_dir, 'plugins', 'platforms')
-# os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = dll_path
+import PyQt6
+dll_dir = os.path.dirname(PyQt6.__file__)
+dll_path = os.path.join(dll_dir, 'plugins', 'platforms')
+os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = dll_path
 
-from PyQt5 import QtCore, QtWidgets, QtGui
-from PyQt5.QtWidgets import *
-from PyQt5.QtGui import QDesktopServices, QFont, QPalette, QColor
-from PyQt5.QtCore import Qt
-from PyQt5.QtCore import qVersionpi
-from matplotlib.backends.backend_qt5agg import (FigureCanvas, NavigationToolbar2QT as NavigationToolbar)
+from PyQt6 import QtCore, QtWidgets, QtGui
+from PyQt6.QtWidgets import *
+from PyQt6.QtGui import QDesktopServices, QFont, QPalette, QColor
+from PyQt6.QtCore import Qt, qVersionpi
 
-"""
+
+from matplotlib.backends.backend_qt5agg import (FigureCanvasQTAgg, NavigationToolbar2QT as NavigationToolbar)
+
 from matplotlib.backends.qt_compat import is_pyqt5
 if qVersion() == 5:
-	from matplotlib.backends.backend_qt5agg import (
-    FigureCanvas, NavigationToolbar2QT as NavigationToolbar)
+	from matplotlib.backends.backend_qt5agg import (FigureCanvasQTAgg, NavigationToolbar2QT as NavigationToolbar)
 else:
-	from matplotlib.backends.backend_qt4agg import (
-    FigureCanvas, NavigationToolbar2QT as NavigationToolbar)
-"""
+	from matplotlib.backends.backend_qt4agg import (FigureCanvasQTAgg, NavigationToolbar2QT as NavigationToolbar)
+
+
 import matplotlib
 from matplotlib.figure import Figure
 from matplotlib.lines import Line2D
-import matplotlib
 
 class DataHandler():
 	def __init__(self):
@@ -953,7 +953,7 @@ class FuelcellUI(QTabWidget):
 		# plot features
 		self.plotfeatures_vis = self.plotfeatures_layout_vis()
 		# actual figure
-		self.figcanvas_vis  = FigureCanvas(Figure(figsize=FuelcellUI.default_figsize))
+		self.figcanvas_vis  = FigureCanvasQTAgg(Figure(figsize=FuelcellUI.default_figsize))
 		self.figcanvas_vis.figure.subplots()
 		# line properties header
 		self.header_lineprops_vis = QLabel('Opções de linha')
