@@ -1,4 +1,5 @@
-pip install --upgrade pip
+sudo apt-get install update
+sudo apt-get install upgrade
 pip install furo==2021.11.16
 pip install numpy
 pip install pandas 
