@@ -1,4 +1,4 @@
-/usr/local/bin/python -m pip install --upgrade pip
+/usr/local/bin/py -m pip install --upgrade pip
 pip install furo==2021.11.16
 pip install numpy
 pip install pandas 
