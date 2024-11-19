@@ -4,7 +4,7 @@ import pandas as pd
 from scipy import stats
 import os
 from fcuff import utils
-from fcuff.modelo import Datum
+from fcuff.model import Datum
 
 #import __init__ *
 
