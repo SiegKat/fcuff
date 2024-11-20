@@ -49,8 +49,8 @@ jobs:
         uses: ammaraskar/sphinx-action@master
         with:
           docs-folder: "docs/"
-      sphinx:
-      configuration: docs/source/conf.py
+      #sphinx:
+      #configuration: docs/source/conf.py
       # Upload artifacts
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
