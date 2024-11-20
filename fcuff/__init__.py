@@ -1,3 +1,5 @@
+__version__ = "0.1.0"
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
