@@ -5,18 +5,63 @@
 version: 2
 
 # Set the OS, Python version, and other tools you might need
-build:
-  os: ubuntu-24.04
-  tools:
-    python: "3.13"
+on:
+  push:
+    branches:
+      - main
 
-# Build documentation in the "docs/" directory with Sphinx
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/fcuff
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      # Update and upgrade system packages
+      - name: Update and upgrade system packages
+        run: sudo apt-get update && sudo apt-get upgrade -y
+      
+      # Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
-# Optionally, but recommended,
-# declare the Python requirements required to build your documentation
-# See https://docs.readthedocs.io/en/stable/guides/reproducible-builds.html
-python:
-   install:
-   - requirements: docs/requirements.txt
-sphinx:
-   configuration: docs/source/conf.py
+      # Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13'
+
+      # Upgrade pip
+      - name: Upgrade pip
+        run: python -m pip install --upgrade pip
+
+      # Install dependencies
+      - name: Install dependencies
+        run: pip install -r docs/requirements.txt
+
+      # Build HTML using Sphinx
+      - name: Build HTML
+        uses: ammaraskar/sphinx-action@master
+        with:
+          docs-folder: "docs/"
+      sphinx:
+      configuration: docs/source/conf.py
+      # Upload artifacts
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: html-docs
+          path: docs/build/html/
+
+      # Deploy to GitHub Pages
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/build/html
