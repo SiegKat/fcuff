@@ -22,7 +22,7 @@ setuptools.setup(
   python_requires='>=3.13',
   install_requires=['numpy', 'pandas', 'matplotlib', 'scipy', 'PySide6', 'PyQT6'],
   project_urls={
-    #'Documentation': '',
+    'Documentation': 'https://siegkat.github.io/fcuff/',
     'Source': 'https://github.com/SiegKat/fcuff'
   }
 )
