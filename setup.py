@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-  name = 'H2Insights',
+  name = 'fcuff',
   version = '0.0.1',
   description = 'Análise e processamento de dados de experimentos com célula combústivel e eletrolizadores',
   long_description = long_description,
