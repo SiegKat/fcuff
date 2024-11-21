@@ -1,7 +1,7 @@
-fuelcell.visuals
+fcuff.visuals
 ==================
 
 Data visualization methods
 
-.. automodule:: fuelcell.visuals
+.. automodule:: fcuff.visuals
 	:members:
