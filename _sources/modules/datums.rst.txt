@@ -1,8 +1,8 @@
-fuelcell.datums
+fcuff.datums
 =================
 
 Data processing functions
 
-.. automodule:: fuelcell.datums
+.. automodule:: fcuff.datums
    :members:
    :undoc-members:
