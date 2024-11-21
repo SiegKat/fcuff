@@ -168,14 +168,15 @@ context = {
 
 # For sphinx >=1.8 we can use html_baseurl to set the canonical URL.
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_baseurl
+# For sphinx >=1.8 we can use html_baseurl to set the canonical URL.
+# https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_baseurl
 if version_info >= (1, 8):
     if not globals().get('html_baseurl'):
         html_baseurl = context['canonical_url']
     context['canonical_url'] = None
 
-
-{# Provide block for extending context data from child template #}
-{% block extra_context %}{% endblock %}
+# Extend context data
+# No direct replacement for {% block extra_context %}; remove or process externally
 
 if 'html_context' in globals():
     for key in context:
@@ -186,20 +187,17 @@ else:
 
 # Add custom RTD extension
 if 'extensions' in globals():
-    # Insert at the beginning because it can interfere
-    # with other extensions.
-    # See https://github.com/rtfd/readthedocs.org/pull/4054
     extensions.insert(0, "readthedocs_ext.readthedocs")
 else:
     extensions = ["readthedocs_ext.readthedocs"]
 
 # Add External version warning banner to the external version documentation
-if '{{ version.type }}' == 'external':
+if version_type == 'external':  # Replace '{{ version.type }}' with Python variable
     extensions.insert(1, "readthedocs_ext.external_version_warning")
-    readthedocs_vcs_url = '{{ vcs_url }}'
-    readthedocs_build_url = '{{ build_url }}'
+    readthedocs_vcs_url = vcs_url  # Replace '{{ vcs_url }}' with Python variable
+    readthedocs_build_url = build_url  # Replace '{{ build_url }}' with Python variable
 
-project_language = '{{ project.language }}'
+project_language = project_language_var  # Replace '{{ project.language }}' with Python variable
 
 # User's Sphinx configurations
 language_user = globals().get('language', None)
@@ -208,7 +206,6 @@ latex_elements_user = globals().get('latex_elements', None)
 
 # Remove this once xindy gets installed in Docker image and XINDYOPS
 # env variable is supported
-# https://github.com/rtfd/readthedocs-docker-images/pull/98
 latex_use_xindy = False
 
 chinese = any([
