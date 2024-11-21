@@ -66,6 +66,6 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           packages-dir: fcuff/
-          verify-metadata: false
-          skip-existing: true
-          verbose: true
+          #verify-metadata: false
+          #skip-existing: true
+          #verbose: true
