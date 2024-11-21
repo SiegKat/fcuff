@@ -183,7 +183,7 @@ context = {
     'docsearch_disabled': False,
     'user_analytics_code': '',
     'global_analytics_code': None,
-    'commit': commit[:8] if project.repo_type == 'git' else commit,
+    'commit': commit[:8] if getattr(project, 'repo_type', '') == 'git' else commit,
 }
 
 # For sphinx >=1.8 we can use html_baseurl to set the canonical URL.
