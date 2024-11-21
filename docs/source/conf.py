@@ -19,11 +19,12 @@ version = '0.0.1'
 
 
 # -- General configuration
-
+   
 extensions = [
     'sphinx.ext.duration',
     'sphinx.ext.doctest',
     'sphinx.ext.autodoc',
+    'sphinx.ext.autosummary',
     'sphinx.ext.napoleon'',
     'sphinx_rtd_theme',
 ]
@@ -34,7 +35,7 @@ templates_path = ['_templates']
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+#exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 #intersphinx_disabled_domains = ['std']
 templates_path = ['_templates']
@@ -54,7 +55,7 @@ html_static_path = ['_static']
 
 master_doc = 'index'
 # -- Options for EPUB output
-epub_show_urls = 'footnote'
+#epub_show_urls = 'footnote'
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
