@@ -1,4 +1,4 @@
-furo==2021.11.16
+furo==2024.8.6
 numpy
 pandas 
 matplotlib
