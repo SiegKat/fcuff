@@ -228,8 +228,9 @@ if version_type == 'external':  # Check for external version type
     context['readthedocs_vcs_url'] = os.environ.get('VCS_URL', '')
     context['readthedocs_build_url'] = os.environ.get('BUILD_URL', '')
 
-project_language = project_language_var  # Replace '{{ project.language }}' with Python variable
-
+#project_language = project_language_var  # Replace '{{ project.language }}' with Python variable
+project_language_var = os.environ.get('PROJECT_LANGUAGE', 'en')  # Default to 'en'
+project_language = project_language_var
 # User's Sphinx configurations
 language_user = globals().get('language', None)
 latex_engine_user = globals().get('latex_engine', None)
