@@ -15,7 +15,10 @@ jobs:
     permissions:
       contents: write
       id-token: write
-    steps:     
+    steps:
+    # Update and upgrade system packages
+      - name: Update and upgrade system packages
+        run: sudo apt-get update && sudo apt-get upgrade -y
       # Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -34,9 +37,7 @@ jobs:
       # Install dependencies
       - name: Install dependencies
         run: pip install -r docs/requirements.txt
-      # Update and upgrade system packages
-      - name: Update and upgrade system packages
-        run: sudo apt-get update && sudo apt-get upgrade -y
+      
       # Build HTML using Sphinx
       - name: Build HTML
         #run: /usr/local/bin/python -m pip install --upgrade pip
