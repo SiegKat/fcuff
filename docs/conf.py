@@ -133,7 +133,12 @@ if globals().get('websupport2_base_url', False):
 # It defaults to `alabaster` which is the default from Sphinx.
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_theme
 project = type("Project", (object,), {"analytics_disabled": False})  # Define a mock object
+# Mock the project object
+class MockProject:
+    repo_type = 'git'  # Default to 'git'
 
+project2 = globals().get('project', MockProject())
+commit = os.environ.get('COMMIT', '00000000')
 context = {
     'using_theme': using_rtd_theme,
     'html_theme': html_theme,
@@ -183,7 +188,7 @@ context = {
     'docsearch_disabled': False,
     'user_analytics_code': '',
     'global_analytics_code': None,
-    'commit': commit[:8] if getattr(project, 'repo_type', '') == 'git' else commit,
+    'commit': commit[:8] if getattr(project2, 'repo_type', '') == 'git' else commit,
 }
 
 # For sphinx >=1.8 we can use html_baseurl to set the canonical URL.
