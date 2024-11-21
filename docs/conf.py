@@ -79,6 +79,7 @@ master_doc = 'index'
 import importlib
 import sys
 import os.path
+import settings  # Ensure `settings.py` is in the Python path
 
 # Borrowed from six.
 PY3 = sys.version_info[0] == 3
