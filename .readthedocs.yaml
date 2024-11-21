@@ -23,7 +23,7 @@
   },
   "sphinx": {
     "builder": "sphinx",
-    "configuration": "/home/docs/checkouts/readthedocs.org/user_builds/fuelcell/checkouts/latest/docs/conf.py",
+    "configuration": "/home/docs/checkouts/readthedocs.org/user_builds/fcuff/checkouts/latest/docs/conf.py",
     "fail_on_warning": false
   },
   "doctype": "sphinx",
