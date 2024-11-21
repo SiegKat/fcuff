@@ -21,11 +21,7 @@ version = '0.0.1'
 # -- General configuration
    
 extensions = [
-    'sphinx.ext.duration',
-    'sphinx.ext.doctest',
     'sphinx.ext.autodoc',
-    'sphinx.ext.autosummary',
-    'sphinx.ext.napoleon',
     'sphinx_rtd_theme',
 ]
 
