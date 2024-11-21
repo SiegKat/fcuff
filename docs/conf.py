@@ -80,7 +80,11 @@ import os
 import sys
 import importlib
 from sphinx import version_info
-
+try:
+    import readthedocs_ext.readthedocs
+    extensions.append("readthedocs_ext.readthedocs")
+except ImportError:
+    pass  # Ignore if the extension is not available
 # Borrowed from six.
 PY3 = sys.version_info[0] == 3
 string_types = str if PY3 else basestring
@@ -239,26 +243,6 @@ latex_elements_user = globals().get('latex_elements', None)
 # Remove this once xindy gets installed in Docker image and XINDYOPS
 # env variable is supported
 latex_use_xindy = False
-
-chinese = any([
-    language_user in ('zh_CN', 'zh_TW'),
-    project_language in ('zh_CN', 'zh_TW'),
-])
-
-japanese = any([
-    language_user == 'ja',
-    project_language == 'ja',
-])
-
-if chinese:
-    latex_engine = latex_engine_user or 'xelatex'
-
-    latex_elements_rtd = {
-        'preamble': '\\usepackage[UTF8]{ctex}\n',
-    }
-    latex_elements = latex_elements_user or latex_elements_rtd
-elif japanese:
-    latex_engine = latex_engine_user or 'platex'
 
 # Make sure our build directory is always excluded
 exclude_patterns = globals().get('exclude_patterns', [])
