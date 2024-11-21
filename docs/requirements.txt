@@ -3,4 +3,3 @@ numpy
 pandas 
 matplotlib
 sphinx_rtd_theme
-sphinx-build==8.1.3
