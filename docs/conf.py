@@ -163,7 +163,7 @@ context = {
     'docsearch_disabled': False,
     'user_analytics_code': '',
     'global_analytics_code': None if project.analytics_disabled else settings.GLOBAL_ANALYTICS_CODE,
-    'commit': {% if project.repo_type == 'git' %}'{{ commit|slice:"8" }}'{% else %}'{{ commit }}'{% endif %},
+    'commit': commit[:8] if project.repo_type == 'git' else commit,
 }
 
 # For sphinx >=1.8 we can use html_baseurl to set the canonical URL.
