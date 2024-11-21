@@ -34,14 +34,10 @@ jobs:
       # Upgrade pip
       - name: Upgrade pip
         run: python -m pip install --upgrade pip
+        
       # Install dependencies
       - name: Install dependencies
         run: pip install -r docs/requirements.txt
-
-
-      # Upgrade pip
-      - name: Upgrade Packages
-        run: /usr/local/bin/python -m pip install --upgrade pip
         
       # Build HTML using Sphinx
       - name: Build HTML
