@@ -76,9 +76,10 @@ master_doc = 'index'
 #
 # Note: this file shouldn't rely on extra dependencies.
 
-import importlib
+import os
 import sys
-import os.path
+import importlib
+from sphinx import version_info
 
 # Borrowed from six.
 PY3 = sys.version_info[0] == 3
@@ -137,8 +138,11 @@ project = type("Project", (object,), {"analytics_disabled": False})  # Define a 
 class MockProject:
     repo_type = 'git'  # Default to 'git'
 
-project2 = globals().get('project', MockProject())
+project_mock = globals().get('project', MockProject())
+
+# Get commit hash
 commit = os.environ.get('COMMIT', '00000000')
+version_type = os.environ.get('VERSION_TYPE', 'internal')  # Default to 'internal'
 context = {
     'using_theme': using_rtd_theme,
     'html_theme': html_theme,
@@ -188,7 +192,9 @@ context = {
     'docsearch_disabled': False,
     'user_analytics_code': '',
     'global_analytics_code': None,
-    'commit': commit[:8] if getattr(project2, 'repo_type', '') == 'git' else commit,
+    'commit': commit[:8] if getattr(project_mock, 'repo_type', '') == 'git' else commit,
+    'vcs_url': os.environ.get('VCS_URL', ''),
+    'build_url': os.environ.get('BUILD_URL', ''),
 }
 
 # For sphinx >=1.8 we can use html_baseurl to set the canonical URL.
@@ -217,10 +223,10 @@ else:
     extensions = ["readthedocs_ext.readthedocs"]
 
 # Add External version warning banner to the external version documentation
-if version_type == 'external':  # Replace '{{ version.type }}' with Python variable
+if version_type == 'external':  # Check for external version type
     extensions.insert(1, "readthedocs_ext.external_version_warning")
-    readthedocs_vcs_url = vcs_url  # Replace '{{ vcs_url }}' with Python variable
-    readthedocs_build_url = build_url  # Replace '{{ build_url }}' with Python variable
+    context['readthedocs_vcs_url'] = os.environ.get('VCS_URL', '')
+    context['readthedocs_build_url'] = os.environ.get('BUILD_URL', '')
 
 project_language = project_language_var  # Replace '{{ project.language }}' with Python variable
 
