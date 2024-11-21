@@ -124,15 +124,9 @@ context = {
     'STATIC_URL': "{{ settings.STATIC_URL }}",
     'PRODUCTION_DOMAIN': "{{ settings.PRODUCTION_DOMAIN }}",
     'proxied_static_path': "{{ proxied_static_path }}",
-    'versions': [{% for version in versions %}
-    ("{{ version.slug }}", "/{{ version.project.language }}/{{ version.slug}}/"),{% endfor %}
-    ],
-    'downloads': [ {% for key, val in downloads.items %}
-    ("{{ key }}", "{{ val }}"),{% endfor %}
-    ],
-    'subprojects': [ {% for slug, url in subproject_urls %}
-        ("{{ slug }}", "{{ url }}"),{% endfor %}
-    ],
+    'versions': [{% for version in versions %}("{{ version.slug }}", "/{{ version.project.language }}/{{ version.slug}}/"),{% endfor %}],
+    'downloads': [ {% for key, val in downloads.items %}("{{ key }}", "{{ val }}"),{% endfor %}],
+    'subprojects': [ {% for slug, url in subproject_urls %}("{{ slug }}", "{{ url }}"),{% endfor %}],
     'slug': '{{ project.slug }}',
     'name': u'{{ project.name }}',
     'rtd_language': u'{{ project.language }}',
