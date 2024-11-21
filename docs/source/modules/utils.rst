@@ -1,7 +1,7 @@
-fuelcell.utils
+fcuff.utils
 ================
 
 File handling functions and miscellaneous auxilliary functions
 
-.. automodule:: fuelcell.utils
+.. automodule:: fcuff.utils
 	:members:
