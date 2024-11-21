@@ -162,7 +162,7 @@ context = {
     'ad_free': False,
     'docsearch_disabled': False,
     'user_analytics_code': '',
-    'global_analytics_code': {% if project.analytics_disabled %}None{% else %}'{{ settings.GLOBAL_ANALYTICS_CODE }}'{% endif %},
+    'global_analytics_code': None if project.analytics_disabled else settings.GLOBAL_ANALYTICS_CODE,
     'commit': {% if project.repo_type == 'git' %}'{{ commit|slice:"8" }}'{% else %}'{{ commit }}'{% endif %},
 }
 
