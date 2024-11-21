@@ -24,7 +24,7 @@ extensions = [
     'sphinx.ext.duration',
     'sphinx.ext.doctest',
     'sphinx.ext.autodoc',
-    'sphinx.ext.intersphinx',
+    'sphinx.ext.napoleon'',
     'sphinx_rtd_theme',
 ]
 
@@ -36,7 +36,7 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
-intersphinx_disabled_domains = ['std']
+#intersphinx_disabled_domains = ['std']
 templates_path = ['_templates']
 # -- Options for HTML output -------------------------------------------------
 
