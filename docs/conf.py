@@ -132,6 +132,8 @@ if globals().get('websupport2_base_url', False):
 # Define this variable in case it's not defined by the user.
 # It defaults to `alabaster` which is the default from Sphinx.
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_theme
+project = type("Project", (object,), {"analytics_disabled": False})  # Define a mock object
+
 context = {
     'using_theme': using_rtd_theme,
     'html_theme': html_theme,
