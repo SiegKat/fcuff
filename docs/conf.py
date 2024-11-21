@@ -109,11 +109,29 @@ if not 'html_static_path' in globals():
     html_static_path = []
 if os.path.exists('_static'):
     html_static_path.append('_static')
-
+using_rtd_theme = (
+    (
+        'html_theme' in globals() and
+        html_theme in ['default'] and
+        # Allow people to bail with a hack of having an html_style
+        'html_style' not in globals()
+    ) or 'html_theme' not in globals()
+)
+if using_rtd_theme:
+    theme = importlib.import_module('sphinx_rtd_theme')
+    html_theme = 'sphinx_rtd_theme'
+    html_style = None
+    html_theme_options = {}
+    if 'html_theme_path' in globals():
+        html_theme_path.append(theme.get_html_theme_path())
+    else:
+        html_theme_path = [theme.get_html_theme_path()]
+if globals().get('websupport2_base_url', False):
+    websupport2_base_url = 'https://readthedocs.org/websupport'
+    websupport2_static_url = 'https://assets.readthedocs.org/static/'
 # Define this variable in case it's not defined by the user.
 # It defaults to `alabaster` which is the default from Sphinx.
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#confval-html_theme
-html_theme = globals().get('html_theme', 'alabaster')
 context = {
     'using_theme': using_rtd_theme,
     'html_theme': html_theme,
