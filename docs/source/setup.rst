@@ -4,7 +4,7 @@ Setup
 Installation
 ------------
 
-To use fcuff, first install it using pip:
+To use fcuff, install it using `pip <https://pypi.org/project/fcuff/>`_
 
 .. code-block:: bash
 
