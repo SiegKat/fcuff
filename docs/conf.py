@@ -79,7 +79,6 @@ master_doc = 'index'
 import importlib
 import sys
 import os.path
-import settings  # Ensure `settings.py` is in the Python path
 
 # Borrowed from six.
 PY3 = sys.version_info[0] == 3
@@ -183,7 +182,7 @@ context = {
     'ad_free': False,
     'docsearch_disabled': False,
     'user_analytics_code': '',
-    'global_analytics_code': None if project.analytics_disabled else settings.GLOBAL_ANALYTICS_CODE,
+    'global_analytics_code': None,
     'commit': commit[:8] if project.repo_type == 'git' else commit,
 }
 
