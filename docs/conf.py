@@ -80,11 +80,13 @@ import os
 import sys
 import importlib
 from sphinx import version_info
-try:
-    import readthedocs_ext.readthedocs
+on_rtd = os.environ.get('READTHEDOCS') == 'True'
+
+# Add the extension only if on Read the Docs
+if on_rtd:
     extensions.append("readthedocs_ext.readthedocs")
-except ImportError:
-    pass  # Ignore if the extension is not available
+else:
+    print("Not on Read the Docs - skipping 'readthedocs_ext.readthedocs'")
 # Borrowed from six.
 PY3 = sys.version_info[0] == 3
 string_types = str if PY3 else basestring
