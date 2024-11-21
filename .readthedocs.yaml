@@ -15,7 +15,7 @@ build:
 # Build documentation in the "docs/" directory with Sphinx
 sphinx:
   
-  configuration: docs/conf.py
+  configuration: https://github.com/rtfd/readthedocs.org/blob/main/readthedocs/doc_builder/templates/doc_builder/conf.py.tmpl
 
   # fail_on_warning: true
 
