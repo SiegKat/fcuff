@@ -29,7 +29,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.13'
+          python-version: '3.11'
 
       # Upgrade pip
       - name: Upgrade pip
@@ -37,7 +37,12 @@ jobs:
       # Install dependencies
       - name: Install dependencies
         run: pip install -r docs/requirements.txt
-      
+
+
+      # Upgrade pip
+      - name: Upgrade Packages
+        run: /usr/local/bin/python -m pip install --upgrade pip
+        
       # Build HTML using Sphinx
       - name: Build HTML
         #run: /usr/local/bin/python -m pip install --upgrade pip
