@@ -6,7 +6,7 @@ Installation
 
 To use fcuff, first install it using pip:
 
-.. code-block:: console
+.. code-block:: bash
 
    pip install fcuff
 
@@ -18,8 +18,3 @@ The fcuff library is still under development, so supdates are being made and fea
 .. code-block:: bash
 
    pip install --upgrade fcuff
-
-
-
-
-
