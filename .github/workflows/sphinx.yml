@@ -41,7 +41,7 @@ jobs:
         
       # Build HTML using Sphinx
       - name: Build HTML
-        uses: ammaraskar/sphinx-action@master
+        uses: docs/source/conf.py
         with:
           docs-folder: "docs/"
       #sphinx:
