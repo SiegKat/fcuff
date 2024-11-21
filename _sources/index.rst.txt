@@ -13,6 +13,8 @@ Contents
 --------
 
 .. toctree::
+   :maxdepth: 1
 
    usage.rst
    setup.rst
+   modules/modindex.rst
