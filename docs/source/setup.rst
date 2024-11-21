@@ -4,14 +4,22 @@ Setup
 Installation
 ------------
 
-To use H2Insights, first install it using pip:
+To use fcuff, first install it using pip:
 
 .. code-block:: console
-   
-   .\new_env\Scripts\activate
 
-   py -m pip install --upgrade pip
-   
    pip install fcuff
 
+
+Updating
+---------
+The fcuff library is still under development, so supdates are being made and features are being added regularly. You should ensure that you are updated to the latest version. fcuff can be updated using pip:
+
+.. code-block:: bash
+
    pip install --upgrade fcuff
+
+
+
+
+
