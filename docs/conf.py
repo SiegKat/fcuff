@@ -14,9 +14,7 @@ project = 'fcuff'
 copyright = '2024, Thiago Costa'
 author = 'Thiago'
 
-release = '0.1'
-version = '0.0.1'
-
+release = '0.0.1'
 
 # -- General configuration
    
